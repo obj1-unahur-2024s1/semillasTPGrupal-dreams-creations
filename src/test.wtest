@@ -1,0 +1,50 @@
+import semillas.*
+
+describe "Plantas"{
+	/*MENTA */
+	const m1 = new Menta(altura = 1, anioDeObtencion = 2000)
+	const m2 = new Menta(altura = 0.3, anioDeObtencion = 2000)
+	/*SOJA */
+	const s1 = new Soja(altura = 0.6, anioDeObtencion = 2009)
+	/*QUINOA */
+	const q1 = new Quinoa(hsDeSolQueTolera = 12, altura = 0.5, anioDeObtencion = 2010)
+	const q2 = new Quinoa(hsDeSolQueTolera = 9, altura = 0.5, anioDeObtencion = 2001)
+	/*Variedades */
+	const h1 = new Hierbabuena(altura = 1)
+	const st1 = new SojaTransgenica ()
+	
+test"Menta de 1m da semillas"{
+	assert.equals(true, m1.daSemillas())
+}
+test"Menta de 1m, ocupa un espacio de 3m"{
+	assert.equals(3, m1.espacio())
+}
+test"Menta de 0.3m da semillas"{
+	assert.equals(false, m2.daSemillas())
+}
+test"Menta de 0.3m, ocupa un espacio"{
+	assert.equals(0.9, m2.espacio())
+}
+test"Soja tiene una tolerancia de hs al sol"{
+	assert.equals(7, s1.hsDeSolQueTolera())
+}
+test"Soja da semillas"{
+	assert.equals(false, s1.daSemillas())
+}
+test"Soja ocupa un espacio "{
+	assert.equals(0.3, s1.espacio())
+}
+test"Quinoa 1 da semillas "{
+	assert.equals(true, q1.daSemillas())
+}
+test"Quinoa 2 da semillas "{
+	assert.equals(true, q2.daSemillas())
+}
+/*VARIEDADES */
+test"Hierbabuena espacio que ocupa "{
+	assert.equals(6, h1.espacio())
+}
+test"Soja transgenica da semillas "{
+	assert.equals(false, st1.daSemillas())
+}
+}
