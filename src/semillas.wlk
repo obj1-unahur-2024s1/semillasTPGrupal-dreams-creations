@@ -14,6 +14,10 @@ class Menta inherits Planta{
 	method daSemillas(){
 		return(self.esFuerte() or (altura > 0.4))
 	}
+	/*3 */
+	method sonBuenasLasCondicionesDe(unaParcela){
+		return (unaParcela.superficie() > 6)
+	}
 }
 /*Variedades */
 class Hierbabuena inherits Menta{
@@ -21,6 +25,7 @@ class Hierbabuena inherits Menta{
 }
 
 class Soja inherits Planta{
+	//**ver*/
 	override method hsDeSolQueTolera(){
 		if (altura < 0.5){
 			return 6
@@ -32,11 +37,17 @@ class Soja inherits Planta{
 	method daSemillas(){
 		return ((self.esFuerte() or anioDeObtencion >= 2007) and altura > 1) 
 	}
+	method sonBuenasLasCondicionesDe(unaParcela){
+		return(self.hsDeSolQueTolera() == unaParcela.hsDeSol())
+	}
 	
 }
 /*Variedades */
 class SojaTransgenica inherits Soja{
 	override method daSemillas() = false
+	override method sonBuenasLasCondicionesDe(unaParcela){
+		return (unaParcela.cantMaxDePlantas() == 1)
+	} 
 }
 
 class Quinoa inherits Planta{
@@ -47,6 +58,8 @@ class Quinoa inherits Planta{
 	method daSemillas(){
 		return (self.esFuerte() or anioDeObtencion < 2005)
 	}
-	
+	method sonBuenasLasCondicionesDe(unaParcela){
+		return unaParcela.listaDePlantas().all({x => altura <= 1.5})
+	}
 	
 }

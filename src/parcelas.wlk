@@ -1,10 +1,13 @@
 import semillas.*
-
+/**Faltan tests desde etapa 4 y etapa 6 - mejorar plantar()*/
 class Parcela{
 	var ancho
 	var largo
 	var hsDeSolQueRecibeAlDia
 	const lPlantas = []
+	
+	method hsDeSol() = hsDeSolQueRecibeAlDia
+	method listaDePlantas() = lPlantas
 	
 	method superficie() = ancho * largo
 	method cantMaxDePlantas(){
@@ -19,14 +22,28 @@ class Parcela{
 	}
 	
 	//3- REVEER y hacer test//
-	/*method plantar(unaPlanta){
-		if(self.hayEspacioParaUnaPlanta()){
-			return lPlantas.add(unaPlanta)
-		}else if(hsDeSolQueRecibeAlDia >= unaPlanta.hsDeSolQueTolera()){
-			return lPlantas.add(unaPlanta)
-		}
-	}
-	method hayEspacioParaUnaPlanta(){
+	/*method hayEspacioParaUnaPlanta(){
 		return (self.cantMaxDePlantas() - lPlantas.size() >= 1)
+	}
+	method plantar(unaPlanta){
+		if(self.hayEspacioParaUnaPlanta()){
+			lPlantas.add(unaPlanta)
+		}else if(hsDeSolQueRecibeAlDia >= unaPlanta.hsDeSolQueTolera()){
+			lPlantas.add(unaPlanta)
+		}
 	}*/
+	
 }
+// 5
+class Agroecologica inherits Parcela{
+	method seAsociaBien(unaPlanta){
+		return (not self.tieneComplicaciones() and unaPlanta.sonBuenasLasCondicionesDe(self))
+	}
+}
+
+class Industriales inherits Parcela{
+	method seAsociaBien(unaPlanta){
+		return (lPlantas.size() >= 2 and unaPlanta.esFuerte() )
+	}
+}
+

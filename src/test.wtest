@@ -1,4 +1,5 @@
 import semillas.*
+import parcelas.*
 
 describe "Plantas"{
 	/*MENTA */
@@ -6,12 +7,15 @@ describe "Plantas"{
 	const m2 = new Menta(altura = 0.3, anioDeObtencion = 2000)
 	/*SOJA */
 	const s1 = new Soja(altura = 0.6, anioDeObtencion = 2009)
+	const s2 = new Soja(altura = 1.5, anioDeObtencion = 2009)
 	/*QUINOA */
 	const q1 = new Quinoa(hsDeSolQueTolera = 12, altura = 0.5, anioDeObtencion = 2010)
 	const q2 = new Quinoa(hsDeSolQueTolera = 9, altura = 0.5, anioDeObtencion = 2001)
 	/*Variedades */
 	const h1 = new Hierbabuena(altura = 1)
 	const st1 = new SojaTransgenica ()
+	/*Parcelas */
+	const p1 = new Parcela(ancho = 20, largo = 1, hsDeSolQueRecibeAlDia = 8)
 	
 test"Menta de 1m da semillas"{
 	assert.equals(true, m1.daSemillas())
@@ -47,4 +51,18 @@ test"Hierbabuena espacio que ocupa "{
 test"Soja transgenica da semillas "{
 	assert.equals(false, st1.daSemillas())
 }
+/*PARCELAS */
+test"Parcela 1 superficie"{
+	assert.equals(20, p1.superficie())
+}
+test"Parcela 1 cantidad maxima de plantas"{
+	assert.equals(4, p1.cantMaxDePlantas())
+}
+/* test"Parcela con 4 plantas"{
+ 	p1.plantar(s2)
+ 	p1.plantar(s2)
+ 	p1.plantar(s2)
+ 	
+ 	assert.equals(, p1.plantar(s2))
+ }*/
 }
