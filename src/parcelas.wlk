@@ -1,5 +1,5 @@
 import semillas.*
-/**Faltan tests desde etapa 4 y etapa 6 - mejorar plantar()*/
+
 class Parcela{
 	var ancho
 	var largo
@@ -8,6 +8,7 @@ class Parcela{
 	
 	method hsDeSol() = hsDeSolQueRecibeAlDia
 	method listaDePlantas() = lPlantas
+	method agregar(planta) = lPlantas.add(planta)
 	
 	method superficie() = ancho * largo
 	method cantMaxDePlantas(){
@@ -21,8 +22,8 @@ class Parcela{
 		return lPlantas.any({x => x.hsDeSolQueTolera() < hsDeSolQueRecibeAlDia})
 	}
 	
-	//3- REVEER y hacer test//
-	/*method hayEspacioParaUnaPlanta(){
+	
+	method hayEspacioParaUnaPlanta(){
 		return (self.cantMaxDePlantas() - lPlantas.size() >= 1)
 	}
 	method plantar(unaPlanta){
@@ -31,7 +32,7 @@ class Parcela{
 		}else if(hsDeSolQueRecibeAlDia >= unaPlanta.hsDeSolQueTolera()){
 			lPlantas.add(unaPlanta)
 		}
-	}*/
+	}
 	
 }
 // 5
@@ -45,5 +46,20 @@ class Industriales inherits Parcela{
 	method seAsociaBien(unaPlanta){
 		return (lPlantas.size() >= 2 and unaPlanta.esFuerte() )
 	}
+}
+
+object inta{
+	const property lParcelas = []
+	
+	method agregar(parcela) = lParcelas.add(parcela)
+	
+	method promedioDePlantas() {
+		return lParcelas.sum({x => x.size()}) / lParcelas.size()
+	} //**ver*/
+	method parcelaMasAutosustentable(){
+		const lParcelasConMasDe4 = lParcelas.filter({x => x.size() >= 4 })
+			return lParcelasConMasDe4.max({x => x.count({p => p.seAsociaBien(p)})}) 
+	}
+	
 }
 

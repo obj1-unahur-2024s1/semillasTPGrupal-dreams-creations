@@ -16,7 +16,7 @@ describe "Plantas"{
 	const st1 = new SojaTransgenica ()
 	/*Parcelas */
 	const p1 = new Parcela(ancho = 20, largo = 1, hsDeSolQueRecibeAlDia = 8)
-	
+	const p2 = new Parcela(ancho = 1, largo = 2, hsDeSolQueRecibeAlDia = 8)
 test"Menta de 1m da semillas"{
 	assert.equals(true, m1.daSemillas())
 }
@@ -58,11 +58,6 @@ test"Parcela 1 superficie"{
 test"Parcela 1 cantidad maxima de plantas"{
 	assert.equals(4, p1.cantMaxDePlantas())
 }
-/* test"Parcela con 4 plantas"{
- 	p1.plantar(s2)
- 	p1.plantar(s2)
- 	p1.plantar(s2)
- 	
- 	assert.equals(, p1.plantar(s2))
- }*/
+//Parcelas
+
 }
